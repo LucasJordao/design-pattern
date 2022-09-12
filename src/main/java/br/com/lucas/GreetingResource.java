@@ -3,11 +3,14 @@ package br.com.lucas;
 import br.com.lucas.entities.User;
 import br.com.lucas.pattern.builder.CarAutomatic;
 import br.com.lucas.pattern.builder.CarAutomaticBuilder;
-import br.com.lucas.pattern.builder.CarBuilder;
+import br.com.lucas.pattern.prototype.Rectangle;
+import br.com.lucas.pattern.prototype.Shape;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/hello")
@@ -37,6 +40,20 @@ public class GreetingResource {
                 .setMotor("V4").build();
 
         System.out.println(carAutomatic);
+
+        return "ok";
+    }
+
+    @GET()
+    @Path("/prototype")
+    public String testePrototypePattern(){
+        List<Shape> shapes = new ArrayList();
+        Rectangle rectangle = new Rectangle(1, 2, "yellow", 1, 2);
+
+        shapes.add(rectangle);
+        shapes.add(rectangle.clone());
+
+        shapes.forEach(System.out::println);
 
         return "ok";
     }
