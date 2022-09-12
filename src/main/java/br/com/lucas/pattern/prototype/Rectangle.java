@@ -13,14 +13,6 @@ public class Rectangle extends Shape{
 
     @Override
     public Shape clone() {
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "Rectangle{" +
-                "width=" + width +
-                ", height=" + height +
-                '}';
+        return new Rectangle(super.getX(), super.getY(), super.getColor(), height, width);
     }
 }

@@ -55,6 +55,11 @@ public class GreetingResource {
 
         shapes.forEach(System.out::println);
 
+        shapes.clear();
+        shapes.add(rectangle);
+        shapes.add(rectangle);
+        shapes.forEach(System.out::println);
+
         return "ok";
     }
 
