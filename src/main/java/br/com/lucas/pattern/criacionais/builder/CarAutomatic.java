@@ -1,4 +1,4 @@
-package br.com.lucas.pattern.builder;
+package br.com.lucas.pattern.criacionais.factory;
 
 public class CarAutomatic {
     private Integer assentos;

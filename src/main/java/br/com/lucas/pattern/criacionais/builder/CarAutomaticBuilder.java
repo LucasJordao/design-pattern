@@ -1,4 +1,4 @@
-package br.com.lucas.pattern.builder;
+package br.com.lucas.pattern.criacionais.factory;
 
 public class CarAutomaticBuilder extends Builder implements CarBuilder{
     private CarAutomatic carAutomatic;

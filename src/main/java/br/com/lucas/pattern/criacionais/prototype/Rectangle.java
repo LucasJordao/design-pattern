@@ -1,4 +1,4 @@
-package br.com.lucas.pattern.prototype;
+package br.com.lucas.pattern.criacionais.prototype;
 
 public class Rectangle extends Shape{
 

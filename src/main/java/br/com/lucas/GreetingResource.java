@@ -1,15 +1,16 @@
 package br.com.lucas;
 
 import br.com.lucas.entities.User;
-import br.com.lucas.pattern.builder.CarAutomatic;
-import br.com.lucas.pattern.builder.CarAutomaticBuilder;
-import br.com.lucas.pattern.prototype.Rectangle;
-import br.com.lucas.pattern.prototype.Shape;
+import br.com.lucas.pattern.criacionais.factory.CarAutomatic;
+import br.com.lucas.pattern.criacionais.factory.CarAutomaticBuilder;
+import br.com.lucas.pattern.criacionais.factory.Product;
+import br.com.lucas.pattern.criacionais.factory.ProductDigitalFactory;
+import br.com.lucas.pattern.criacionais.prototype.Rectangle;
+import br.com.lucas.pattern.criacionais.prototype.Shape;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +62,14 @@ public class GreetingResource {
         shapes.forEach(System.out::println);
 
         return "ok";
+    }
+
+    @GET
+    @Path("/factory")
+    public String testeFactoryPattern(){
+        Product product = new ProductDigitalFactory().createProduct(10.0);
+        System.out.println(product.getValor());
+        return "okay";
     }
 
     @GET
