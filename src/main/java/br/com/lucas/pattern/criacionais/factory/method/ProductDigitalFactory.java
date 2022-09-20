@@ -1,4 +1,4 @@
-package br.com.lucas.pattern.criacionais.factory;
+package br.com.lucas.pattern.criacionais.factory.method;
 
 public class ProductDigitalFactory implements ProductFactory {
     public ProductDigitalFactory() {

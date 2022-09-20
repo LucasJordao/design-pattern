@@ -31,3 +31,22 @@ Usamos como fonte: https://refactoring.guru/pt-br/design-patterns/
  - :white_check_mark: Princípio aberto/fechado. Você pode introduzir novos tipos de produtos no programa sem quebrar o código cliente existente.
 
  - :x: O código pode se tornar mais complicado, pois você precisa introduzir muitas subclasses novas para implementar o padrão. O melhor cenário é quando você está introduzindo o padrão em uma hierarquia existente de classes criadoras.
+
+4- [Factory Abstract](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/abstract): O *Factory Abstract* é bem similar ao factory method, a diferença é que o abstract tem como principio criar um conjunto de produtos criado por uma factory. Não entendeu? vamos para o exemplo:
+No factory method tinhamos uma fabrica especifica que criavam produtos especificos, já no factory abstract nós temos uma fábrica que cria um conjunto de objetos, exemplo:
+PizzaFactory -> PizzaCalabresaFactory{
+ createSabor() Sabor
+ createBorda(): Borda
+},
+
+PizzaMussarelaFactory{
+ createSabor() Sabor
+ createBorda(): Borda
+}
+
+ - :white_check_mark: Você pode ter certeza que os produtos que você obtém de uma fábrica são compatíveis entre si.
+ - :white_check_mark: Você evita um vínculo forte entre produtos concretos e o código cliente.
+ - :white_check_mark: Princípio de responsabilidade única. Você pode extrair o código de criação do produto para um lugar, fazendo o código ser de fácil manutenção
+ - :white_check_mark:Princípio aberto/fechado. Você pode introduzir novas variantes de produtos sem quebrar o código cliente existente.
+
+ - :x: O código pode tornar-se mais complicado do que deveria ser, uma vez que muitas novas interfaces e classes são introduzidas junto com o padrão.

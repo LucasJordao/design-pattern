@@ -3,8 +3,10 @@ package br.com.lucas;
 import br.com.lucas.entities.User;
 import br.com.lucas.pattern.criacionais.factory.CarAutomatic;
 import br.com.lucas.pattern.criacionais.factory.CarAutomaticBuilder;
-import br.com.lucas.pattern.criacionais.factory.Product;
-import br.com.lucas.pattern.criacionais.factory.ProductDigitalFactory;
+import br.com.lucas.pattern.criacionais.factory.fabstract.MotoBigTrailFactory;
+import br.com.lucas.pattern.criacionais.factory.fabstract.MotoFactory;
+import br.com.lucas.pattern.criacionais.factory.method.Product;
+import br.com.lucas.pattern.criacionais.factory.method.ProductDigitalFactory;
 import br.com.lucas.pattern.criacionais.prototype.Rectangle;
 import br.com.lucas.pattern.criacionais.prototype.Shape;
 
@@ -65,10 +67,20 @@ public class GreetingResource {
     }
 
     @GET
-    @Path("/factory")
-    public String testeFactoryPattern(){
+    @Path("/factoryMethod")
+    public String testeFactoryMethodPattern(){
         Product product = new ProductDigitalFactory().createProduct(10.0);
         System.out.println(product.getValor());
+        return "okay";
+    }
+
+
+    @GET
+    @Path("/factoryAbstract")
+    public String testeFactoryAbstractPattern(){
+        MotoFactory motoFactory = new MotoBigTrailFactory();
+        System.out.println(motoFactory.createAmortecedor().getNome());
+        System.out.println(motoFactory.createRoda().getAro());
         return "okay";
     }
 
