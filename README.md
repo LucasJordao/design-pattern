@@ -22,7 +22,7 @@ Usamos como fonte: https://refactoring.guru/pt-br/design-patterns/
  
  - :x: A complexidade geral do código aumenta uma vez que o padrão exige criar múltiplas classes novas.
 
- 3- [Factory Method](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/factory): O *Factory Method* tem como princípio tirar a responsabilidade de criação de um "produto" da classe principal que irá usa-la, então o que ela nos fornece: Nós teremos que criar uma classe criadora abstrata (Factory abstrato), uma classe criadora concreta (Factory), um produto abstrato e um produto concreto.
+ 3- [Factory Method](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/factory/method): O *Factory Method* tem como princípio tirar a responsabilidade de criação de um "produto" da classe principal que irá usa-la, então o que ela nos fornece: Nós teremos que criar uma classe criadora abstrata (Factory abstrato), uma classe criadora concreta (Factory), um produto abstrato e um produto concreto.
  Então, num cenário que utilize o factory method que faça sentido temos que encontrar uma solicitação ao factory de criação de um produto, o produto que será criado vai ser de acordo com o factory. Exemplo:
  Desejamos criar uma pessoa do sexo masculino, para isso poderiamos instanciar new Homem(), e se quisessemos criar o oposto fariamos new Mulher(), com o factory isso ficaria dessa forma: PessoaFactory.createPessoa("masculino").
  
@@ -32,7 +32,7 @@ Usamos como fonte: https://refactoring.guru/pt-br/design-patterns/
 
  - :x: O código pode se tornar mais complicado, pois você precisa introduzir muitas subclasses novas para implementar o padrão. O melhor cenário é quando você está introduzindo o padrão em uma hierarquia existente de classes criadoras.
 
-4- [Factory Abstract](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/abstract): O *Factory Abstract* é bem similar ao factory method, a diferença é que o abstract tem como principio criar um conjunto de produtos criado por uma factory. Não entendeu? vamos para o exemplo:
+4- [Factory Abstract](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/factory/abstract): O *Factory Abstract* é bem similar ao factory method, a diferença é que o abstract tem como principio criar um conjunto de produtos criado por uma factory. Não entendeu? vamos para o exemplo:
 No factory method tinhamos uma fabrica especifica que criavam produtos especificos, já no factory abstract nós temos uma fábrica que cria um conjunto de objetos, exemplo:
 PizzaFactory -> PizzaCalabresaFactory{
  createSabor() Sabor
