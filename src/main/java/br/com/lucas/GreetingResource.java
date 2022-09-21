@@ -9,6 +9,8 @@ import br.com.lucas.pattern.criacionais.factory.method.Product;
 import br.com.lucas.pattern.criacionais.factory.method.ProductDigitalFactory;
 import br.com.lucas.pattern.criacionais.prototype.Rectangle;
 import br.com.lucas.pattern.criacionais.prototype.Shape;
+import br.com.lucas.pattern.criacionais.singleton.SingletonDatabase;
+import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
@@ -81,6 +83,16 @@ public class GreetingResource {
         MotoFactory motoFactory = new MotoBigTrailFactory();
         System.out.println(motoFactory.createAmortecedor().getNome());
         System.out.println(motoFactory.createRoda().getAro());
+        return "okay";
+    }
+
+    @GET
+    @Path("/singleton")
+    public String testeSingletonPattern(){
+        SingletonDatabase singleton = SingletonDatabase.getInstance();
+        System.out.println(singleton.connect());
+
+        System.out.println(SingletonDatabase.getInstance().connect());
         return "okay";
     }
 

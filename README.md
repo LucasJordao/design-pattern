@@ -5,15 +5,7 @@ Este projeto consiste em mostrar implementações reais dos padrões de projetos
 Usamos como fonte: https://refactoring.guru/pt-br/design-patterns/
 
 
-### Padrões criacionais:
-1- [Prototype](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/prototype): O *Prototype* consiste em um padrão cuja função é replicar um objeto com o mesmo estado para seus clones, geralmente o objeto possui uma função <span style="color:red;">"clone()"</span>. Devemos ficar atentos na proposta do código, porque podemos ter um <b>Deep copy</b> ou <b>Shallow copy</b>. O deep copy é um objeto clonado com uma refencia nova no ponteiro, já o shallow é a mesma referencia.
-
- - :white_check_mark: Podemos reaproveitar um objeto já criado anteriormente sem necessidade de criar passando os valores no construtor.
- - :white_check_mark: Podemos facilitar a herança de objetos com configurações pré determinadas.
- - :white_check_mark: Você pode produzir objetos complexos mais convenientemente
- 
- - :x: Clonar objetos complexos que têm referências circulares pode ser bem complicado.
- 
+### Padrões criacionais: 
  2- [Builder](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/builder): O *Builder* consiste em um padrão cuja função é facilitar a criação de objetos com construtores muito grandes e também consegue isolar as regras de négocio referentes aos campos de um objeto.
  
  - :white_check_mark: Você pode construir objetos passo a passo, adiar as etapas de construção ou rodar etapas recursivamente.
@@ -32,7 +24,7 @@ Usamos como fonte: https://refactoring.guru/pt-br/design-patterns/
 
  - :x: O código pode se tornar mais complicado, pois você precisa introduzir muitas subclasses novas para implementar o padrão. O melhor cenário é quando você está introduzindo o padrão em uma hierarquia existente de classes criadoras.
 
-4- [Factory Abstract](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/factory/abstract): O *Factory Abstract* é bem similar ao factory method, a diferença é que o abstract tem como principio criar um conjunto de produtos criado por uma factory. Não entendeu? vamos para o exemplo:
+4- [Factory Abstract](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/factory/fabstract): O *Factory Abstract* é bem similar ao factory method, a diferença é que o abstract tem como principio criar um conjunto de produtos criado por uma factory. Não entendeu? vamos para o exemplo:
 No factory method tinhamos uma fabrica especifica que criavam produtos especificos, já no factory abstract nós temos uma fábrica que cria um conjunto de objetos, exemplo:
 PizzaFactory -> PizzaCalabresaFactory{
  createSabor() Sabor
@@ -50,3 +42,23 @@ PizzaMussarelaFactory{
  - :white_check_mark:Princípio aberto/fechado. Você pode introduzir novas variantes de produtos sem quebrar o código cliente existente.
 
  - :x: O código pode tornar-se mais complicado do que deveria ser, uma vez que muitas novas interfaces e classes são introduzidas junto com o padrão.
+
+1- [Prototype](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/prototype): O *Prototype* consiste em um padrão cuja função é replicar um objeto com o mesmo estado para seus clones, geralmente o objeto possui uma função <span style="color:red;">"clone()"</span>. Devemos ficar atentos na proposta do código, porque podemos ter um <b>Deep copy</b> ou <b>Shallow copy</b>. O deep copy é um objeto clonado com uma refencia nova no ponteiro, já o shallow é a mesma referencia.
+
+ - :white_check_mark: Podemos reaproveitar um objeto já criado anteriormente sem necessidade de criar passando os valores no construtor.
+ - :white_check_mark: Podemos facilitar a herança de objetos com configurações pré determinadas.
+ - :white_check_mark: Você pode produzir objetos complexos mais convenientemente
+
+ - :x: Clonar objetos complexos que têm referências circulares pode ser bem complicado.
+
+4- [Singleton](https://github.com/LucasJordao/design-pattern/tree/master/src/main/java/br/com/lucas/pattern/criacionais/singleton): O *Singleton* tem com principio uma função totalmente diferente da *Prototype* comentada anteriormente. Isso porque o singleton define que quando temos um cénario cujo o sistema precisa de apenas uma instância em uso por todos os clientes requisitantes, em hipotese alguma aquela instância pode ser clonada, mas sim reaproveitada.
+Então para isso precisamos ter uma classe com construtor privado e com metodo de instancia statico e uma variavel da instancia statica e privada.
+
+ - :white_check_mark: Você pode ter certeza que uma classe só terá uma única instância.
+ - :white_check_mark: Você ganha um ponto de acesso global para aquela instância.
+ - :white_check_mark: O objeto singleton é inicializado somente quando for pedido pela primeira vez.
+
+ - :x: Viola o princípio de responsabilidade única. O padrão resolve dois problemas de uma só vez.
+ - :x: O padrão Singleton pode mascarar um design ruim, por exemplo, quando os componentes do programa sabem muito sobre cada um.
+ - :x: O padrão requer tratamento especial em um ambiente multithreaded para que múltiplas threads não possam criar um objeto singleton várias vezes.
+ - :x: Pode ser difícil realizar testes unitários do código cliente do Singleton porque muitos frameworks de teste dependem de herança quando produzem objetos simulados. Já que o construtor da classe singleton é privado e sobrescrever métodos estáticos é impossível na maioria das linguagem, você terá que pensar em uma maneira criativa de simular o singleton. Ou apenas não escreva os testes. Ou não use o padrão Singleton.
