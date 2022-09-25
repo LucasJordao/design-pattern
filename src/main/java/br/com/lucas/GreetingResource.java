@@ -1,6 +1,8 @@
 package br.com.lucas;
 
 import br.com.lucas.entities.User;
+import br.com.lucas.pattern.comportamentais.observer.PaymentEmployee;
+import br.com.lucas.pattern.comportamentais.observer.PaymentSystem;
 import br.com.lucas.pattern.criacionais.factory.CarAutomatic;
 import br.com.lucas.pattern.criacionais.factory.CarAutomaticBuilder;
 import br.com.lucas.pattern.criacionais.factory.fabstract.MotoBigTrailFactory;
@@ -96,11 +98,22 @@ public class GreetingResource {
         return "okay";
     }
 
-    @GET
-    @Path("/users")
-    public List<User> findAll(){
-        return User.listAll();
-    }
+//    Padrões Comportamentais
 
+    @GET
+    @Path("/observer")
+    public String testeObserverPattern(){
+        PaymentSystem payment = new PaymentSystem();
+
+        PaymentEmployee paymentEmployee = new PaymentEmployee();
+        PaymentEmployee paymentEmployee2 = new PaymentEmployee();
+
+        payment.getEvent().subscribe("NOVEMBER", paymentEmployee);
+        payment.getEvent().subscribe("DECEMBER", paymentEmployee2);
+
+
+        payment.pay("NOVEMBER", 1200.0);
+        return "Observer Pattern";
+    }
 
 }
