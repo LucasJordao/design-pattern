@@ -3,6 +3,8 @@ package br.com.lucas;
 import br.com.lucas.entities.User;
 import br.com.lucas.pattern.comportamentais.observer.PaymentEmployee;
 import br.com.lucas.pattern.comportamentais.observer.PaymentSystem;
+import br.com.lucas.pattern.comportamentais.strategy.ConcreteStrategyMultiply;
+import br.com.lucas.pattern.comportamentais.strategy.Context;
 import br.com.lucas.pattern.criacionais.factory.CarAutomatic;
 import br.com.lucas.pattern.criacionais.factory.CarAutomaticBuilder;
 import br.com.lucas.pattern.criacionais.factory.fabstract.MotoBigTrailFactory;
@@ -114,6 +116,17 @@ public class GreetingResource {
 
         payment.pay("NOVEMBER", 1200.0);
         return "Observer Pattern";
+    }
+
+    @GET
+    @Path("/strategy")
+    public String testeStrategyPattern(){
+        Context context = new Context();
+
+        context.setStrategy(new ConcreteStrategyMultiply());
+        System.out.println(context.executeStrategy(10.0, 10.0));
+
+        return "Strategy Pattern";
     }
 
 }
